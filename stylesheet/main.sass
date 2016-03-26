@@ -1,0 +1,55 @@
+$grey: #aaa
+$maxWidth: 500px
+
+body
+    box-sizing: border-box
+
+
+.surveys
+    display: flex
+    flex-flow: row wrap
+    @media screen and (max-width: $maxWidth)
+        flex-flow: column wrap
+
+.survey
+    width: 30%
+    margin: 10px
+    padding: 5px
+    border: 1px solid $grey
+    box-shadow: 4px 4px 4px $grey
+    @media screen and (max-width: 500px)
+        width: 95%
+
+
+
+.questionAnswer
+    margin-top: 5px
+    margin-bottom: 5px
+
+
+.user
+    padding-bottom: 10px
+    font-weight: bold
+
+
+.expand
+    cursor: pointer
+
+
+form
+    border: 1px solid $grey
+    box-shadow: 4px 4px 4px $grey
+    margin-top: 10px
+    margin-bottom: 10px
+    padding-top: 5px
+    padding-bottom: 10px
+    padding-left: 10px
+    padding-right: 10px
+    width: 100%
+
+    .answer
+        width: 100%
+        height: 100px
+        resize: none
+        margin: 0
+        padding: 0
