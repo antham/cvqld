@@ -2,8 +2,10 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var surveys = require('./mock');
 var _ = require('lodash');
+var rxjs = require('rxjs');
+var rp = require('request-promise');
+
 
 var questions = ["Qu'est ce qui différencie l'homme de l'animal ?", "Quelle est la pire mort ?", "Un génie (ou Dieu) vous propose d'exaucer un souhait, que demandez-vous ?", "Quelle est la plus grande cause de malheur sur cette terre ?", "Où réside l'espoir ?", "Quelle est la faute pour laquelle vous avez le plus d'indulgence ?", "Quelle est l'expérience la plus déconcertante de votre vie ? La chose qui vous a le plus marqué."];
 
@@ -139,16 +141,25 @@ var Surveys = React.createClass({
     render: function() {
         return (
             <div className="surveys">
-            {this.props.surveys.map((s, i) =>
-                <Survey key={'survey' + i} questions={this.props.questions} name={s.name} age={s.age ? s.age : ""} answers={s.answers} />
-            )}
+                    {this.props.surveys.map((s, i) =>
+                        <Survey key={s.id} questions={this.props.questions} name={s.name} age={s.age ? s.age : ""} answers={[s.answer1, s.answer2, s.answer3, s.answer4, s.answer5, s.answer6, s.answer7]} />
+                     )}
             </div>
         )
     }
 });
 
-ReactDOM.render(
-    <QuestionAnswersFormNew questions={questions} />,
-    /*<Surveys questions={questions} surveys={surveys.surveys} />, */
-    document.getElementById('start')
-);
+
+rp(
+    {
+        uri: 'http://localhost:9000/surveys',
+        json: true
+    }
+)
+.then((surveys) => {
+    ReactDOM.render(
+        /*<QuestionAnswersFormNew questions={questions} />,*/
+        <Surveys questions={questions} surveys={surveys} />,
+        document.getElementById('start')
+    );
+});

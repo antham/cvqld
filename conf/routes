@@ -5,6 +5,8 @@
 module:testrunner
 
 GET     /                                       App.Index
+GET     /surveys                                Surveys.Index
+POST    /surveys                                Surveys.Create
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
