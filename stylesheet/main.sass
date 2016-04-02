@@ -41,6 +41,36 @@ $maxWidth: 500px
         margin-top: 5px
         margin-bottom: 15px
 
+.randomSurveys
+  margin: 10px
+
+  button
+    width: 100%
+    background-color: #036
+    color: white
+    margin-bottom: 15px
+    font-size: x-large
+    &:hover
+      color: white
+    &:visited
+      color: white
+  .survey
+    padding: 5px
+    width: 100%
+    border: 1px solid $grey
+    box-shadow: 4px 4px 4px $grey
+    .user
+      padding-bottom: 10px
+      font-weight: bold
+
+    .questionAnswer
+      margin-top: 5px
+      margin-bottom: 5px
+
+      .answer
+        margin-top: 5px
+        margin-bottom: 15px
+
 form
   border: 1px solid $grey
   box-shadow: 4px 4px 4px $grey
@@ -60,3 +90,29 @@ form
     &:after
       color : red
       content: " *"
+
+#menu
+  height: 500px
+  /* display: flex
+  /* align-items: center
+  /* justify-content: center
+  text-align: center
+
+  p
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-top: 50px
+
+  button
+    margin-left: 10px
+    display: block
+    width: 200px
+    height: 112px
+    @media screen and (max-width: 500px)
+      height: 180px
+    white-space: normal
+    span
+      display: block
+    background-color: #036
+    color: white

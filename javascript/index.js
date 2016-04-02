@@ -2,13 +2,11 @@
 
 require('./global');
 
-const questions = require('./questions');
 const QuestionAnswersForm = require('./views').forms.QuestionAnswersForm;
-const Surveys = require('./views').Surveys;
-
+const List = require('./views').list;
 
 ReactDOM.render(
     // <QuestionAnswersForm questions={questions} />,
-    <Surveys questions={questions} />,
+    <List />,
     document.getElementById('start')
 );

@@ -2,5 +2,5 @@
 
 module.exports = {
   forms: require('./forms'),
-  Surveys: require('./surveys')
-}
+  list: require('./list')
+};

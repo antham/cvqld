@@ -5,16 +5,16 @@ import (
 )
 
 type Survey struct {
-	ID string `json:"id" gorm:"type:uuid"`
-	Name string `json:"name" gorm:"varchar(255)"`
-	Age int `json:"age"`
-	Answer1 string `json:"answer1"`
-	Answer2 string `json:"answer2"`
-	Answer3 string `json:"answer3"`
-	Answer4 string `json:"answer4"`
-	Answer5 string `json:"answer5"`
-	Answer6 string `json:"answer6"`
-	Answer7 string `json:"answer7"`
+	ID string `json:"id" gorm:"type:uuid;primary_key"`
+	Name string `json:"name" gorm:"varchar(255);not null"`
+	Age int `json:"age" gorm:"not null"`
+	Answer1 string `json:"answer1" gorm:"not null"`
+	Answer2 string `json:"answer2" gorm:"not null"`
+	Answer3 string `json:"answer3" gorm:"not null"`
+	Answer4 string `json:"answer4" gorm:"not null"`
+	Answer5 string `json:"answer5" gorm:"not null"`
+	Answer6 string `json:"answer6" gorm:"not null"`
+	Answer7 string `json:"answer7" gorm:"not null"`
 }
 
 func NewSurvey() *Survey {
