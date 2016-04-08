@@ -41,3 +41,13 @@ func (c Surveys) Create() revel.Result {
 		survey,
 	)
 }
+
+func (c Surveys) Count() revel.Result {
+	var count int
+
+	models.CountSurveys(&count)
+
+	return c.RenderJson(
+		map[string]int{"count": count},
+	)
+}

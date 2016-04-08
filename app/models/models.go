@@ -4,6 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"log"
+	"os"
 )
 
 var db *gorm.DB
@@ -11,7 +12,7 @@ var db *gorm.DB
 func init() {
 	var err error
 
-	db, err = gorm.Open("postgres", "user=postgres dbname=postgres sslmode=disable")
+	db, err = gorm.Open("postgres", "user=" + os.Getenv("DBUSER") + " dbname=" + os.Getenv("DBNAME") + " sslmode=disable")
 
 	if err != nil {
 		log.Fatal(err)

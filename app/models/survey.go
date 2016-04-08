@@ -24,9 +24,13 @@ func NewSurvey() *Survey {
 }
 
 func FindAllSurveys(surveys *[]Survey) {
-	db.Find(surveys)
+	db.Order("surveys.created_at desc", true).Find(surveys)
 }
 
 func CreateSurvey(survey *Survey) {
 	db.Create(survey)
+}
+
+func CountSurveys(total *int) {
+	db.Model(Survey{}).Count(total)
 }

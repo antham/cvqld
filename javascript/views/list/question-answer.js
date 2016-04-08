@@ -21,7 +21,7 @@ var QuestionAnswer = React.createClass({
             {
                 this.state.full ?
                 <span>{this.props.answer}</span> :
-                <span>{_.truncate(this.props.answer, {'length': 200, 'separator':'&hellip'})} {this.props.answer && this.props.answer.length > 200 ? <a className="expand">(voir la suite)</a> : '' }</span>
+                <span>{_.truncate(this.props.answer, {'length': this.props.messageMaxLength, 'separator':'&hellip'})} {this.props.answer && this.props.answer.length > this.props.messageMaxLength ? <a className="expand">(voir la suite)</a> : '' }</span>
             }
                 </div>
             </div>

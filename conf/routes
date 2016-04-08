@@ -10,6 +10,7 @@ GET     /                                       App.Index
 
 GET     /api/v1/surveys                                Surveys.Index
 POST    /api/v1/surveys                                Surveys.Create
+GET     /api/v1/surveys/count                          Surveys.Count
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

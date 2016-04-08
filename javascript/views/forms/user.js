@@ -9,7 +9,7 @@ var User = React.createClass({
 
     edit: function(e) {
         let key = e.target.id;
-        let value = e.target.value;
+        let value = _.trim(e.target.value);
 
         let user = this.state.user;
         user[key] = value;
@@ -22,20 +22,20 @@ var User = React.createClass({
         return (
             <div className="user">
                 <div className="form-group">
-                    <label htmlFor="name" className="name">Entrez votre prénom</label>
+                    <label htmlFor="name" className="name">Votre prénom</label>
                     <input id="name" onChange={this.edit} type="text" className="form-control"></input>
                 </div>
                 <div className="form-group">
                     <label htmlFor="age" className="age">Votre age</label>
-                    <select id="age" onChange={this.edit} className="form-control">
-                        <option disabled selected={true}>----</option>
-            {
-                _.range(1, maxAge).map
-                (
-                    (value, i) =>
-                        <option key={'age' + i} value={value}>{value}</option>
-                )
-            }
+                    <select id="age" onChange={this.edit} className="form-control" defaultValue="default">
+                        <option disabled value="default">----</option>
+                                               {
+                                                   _.range(1, maxAge).map
+                                                   (
+                                                       (value, i) =>
+                                                           <option key={'age' + i} value={value}>{value}</option>
+                                                   )
+                                               }
                     </select>
                 </div>
             </div>

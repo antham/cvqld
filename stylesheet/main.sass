@@ -1,3 +1,12 @@
+@import "bootswatch-scss/flatly/variables"
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/variables"
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap"
+@import "bootswatch-scss/flatly/bootswatch"
+
+@font-face
+  font-family: DistantStrokeMedium
+  src: url("font/distant_stroke_medium.otf") format("opentype")
+
 =border-radius($radius)
   -webkit-border-radius: $radius
   -moz-border-radius:    $radius
@@ -7,8 +16,68 @@
 $grey: #aaa
 $maxWidth: 500px
 
+h1
+  font-family: DistantStrokeMedium
+  font-size: 80px
+  margin-bottom: 50px
+
+nav
+  button
+    margin-left: 10px
+
 .expand
   cursor: pointer
+
+.survey
+  padding: 10px
+  border: 1px solid $grey
+  box-shadow: 4px 4px 4px $grey
+
+  .user
+    padding-bottom: 10px
+    font-weight: bold
+    button
+      display: none
+  .questionAnswer
+    margin-top: 5px
+    margin-bottom: 5px
+  .answer
+    margin-top: 5px
+    margin-bottom: 15px
+  .question
+    color: $gray-dark
+  .layout
+    display: none
+    cursor: none
+
+  &.sumUp
+    position: relative
+    .layout
+      cursor: pointer
+      display: flex
+      position: absolute
+      flex-flow: column wrap
+      width: 100%
+      height: 100%
+      align-items: center
+      justify-content: center
+      margin-left: -5px
+      margin-right: -5px
+      .name
+        font-size: xx-large
+        font-weight: bold
+      .age
+        font-weight: initial
+      button
+        display: inline-block
+        margin-top: 5px
+    .user, .questionAnswer
+      visibility: hidden
+
+.pager
+  margin-left: 10px
+  @media screen and (max-width: $screen-xs-max)
+    margin-left: 0px
 
 .surveys
   display: flex
@@ -18,58 +87,29 @@ $maxWidth: 500px
 
   .survey
     width: 31.58%
-    padding: 5px
     margin: 10px
-    border: 1px solid $grey
-    box-shadow: 4px 4px 4px $grey
-    @media screen and (max-width: 500px)
+    @media screen and (max-width: $screen-xs-max)
       width: 100%
       margin: 0
       margin-top: 10px
-    @media screen and (min-width: 501px) and (max-width: 768px)
+    @media screen and (min-width: $screen-sm-min) and (max-width: $screen-md-max)
       width: 47.224%
-
-    .user
-      padding-bottom: 10px
-      font-weight: bold
-
-    .questionAnswer
-      margin-top: 5px
-      margin-bottom: 5px
-
-      .answer
-        margin-top: 5px
-        margin-bottom: 15px
 
 .randomSurveys
   margin: 10px
 
   button
+    white-space: normal
     width: 100%
-    background-color: #036
-    color: white
     margin-bottom: 15px
     font-size: x-large
     &:hover
       color: white
     &:visited
       color: white
-  .survey
-    padding: 5px
-    width: 100%
-    border: 1px solid $grey
-    box-shadow: 4px 4px 4px $grey
-    .user
-      padding-bottom: 10px
-      font-weight: bold
 
-    .questionAnswer
-      margin-top: 5px
-      margin-bottom: 5px
-
-      .answer
-        margin-top: 5px
-        margin-bottom: 15px
+    .survey
+      width: 100%
 
 form
   border: 1px solid $grey
@@ -84,7 +124,11 @@ form
     resize: none
 
   #age
-    width: 6%
+    width: 10%
+    @media screen and (max-width: $screen-xs-max)
+      width: 30%
+    @media screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+      width: 15%
 
   label
     &:after
@@ -93,26 +137,31 @@ form
 
 #menu
   height: 500px
-  /* display: flex
-  /* align-items: center
-  /* justify-content: center
   text-align: center
 
   p
     display: flex
     align-items: center
     justify-content: center
-    margin-top: 50px
+    @media screen and (max-width: $screen-xs-max)
+      flex-flow: column wrap
 
-  button
-    margin-left: 10px
-    display: block
-    width: 200px
-    height: 112px
-    @media screen and (max-width: 500px)
-      height: 180px
-    white-space: normal
-    span
+    button,a
+      white-space: initial
+      margin-left: 15px
       display: block
-    background-color: #036
-    color: white
+      width: 200px
+      height: 120px
+      @media screen and (max-width: $screen-xs-max)
+        margin-bottom: 15px
+      span
+        display: block
+    a
+      display: flex
+      justify-content: center
+      align-items: center
+      flex-direction: column
+
+.presentation
+  div
+    padding-top: 15px

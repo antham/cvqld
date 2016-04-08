@@ -2,7 +2,7 @@
 
 var QuestionAnswer = React.createClass({
     edit: function(e) {
-        this.props.setAnswer(this.props.rank, e.target.value);
+        this.props.setAnswer(this.props.rank, _.trim(e.target.value));
     },
 
     render: function() {

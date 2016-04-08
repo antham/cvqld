@@ -1,6 +1,3 @@
 'use strict';
 
-module.exports = {
-  forms: require('./forms'),
-  list: require('./list')
-};
+module.exports = require('./menu');

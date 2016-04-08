@@ -1,6 +1,6 @@
 'use strict';
 
-const baseURL = 'http://localhost:9000/api/v1';
+var baseURL = require('./url');
 
 module.exports = {
   surveys: {
@@ -11,6 +11,10 @@ module.exports = {
     create: {
       uri: baseURL + '/surveys',
       method: 'POST'
+    },
+    count: {
+      uri: baseURL + '/surveys/count',
+      method: 'GET'
     }
   }
 };
