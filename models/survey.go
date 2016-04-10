@@ -5,9 +5,9 @@ import (
 )
 
 type Survey struct {
-	ID string `json:"id" gorm:"type:uuid;primary_key"`
-	Name string `json:"name" gorm:"varchar(255);not null"`
-	Age int `json:"age" gorm:"not null"`
+	ID      string `json:"id" gorm:"type:uuid;primary_key"`
+	Name    string `json:"name" gorm:"varchar(255);not null"`
+	Age     int    `json:"age" gorm:"not null"`
 	Answer1 string `json:"answer1" gorm:"not null"`
 	Answer2 string `json:"answer2" gorm:"not null"`
 	Answer3 string `json:"answer3" gorm:"not null"`
