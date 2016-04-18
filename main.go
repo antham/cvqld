@@ -1,23 +1,23 @@
 package main
 
 import (
-	"net/http"
-	"io/ioutil"
-	"io"
 	"encoding/json"
 	"html/template"
+	"io"
+	"io/ioutil"
+	"net/http"
 
-    "github.com/labstack/echo"
-	"github.com/labstack/echo/engine/standard"
 	"github.com/antham/askme/models"
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/engine/standard"
 )
 
 type Template struct {
-    templates *template.Template
+	templates *template.Template
 }
 
 func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
-    return t.templates.ExecuteTemplate(w, name, data)
+	return t.templates.ExecuteTemplate(w, name, data)
 }
 
 func Index(c echo.Context) error {
@@ -31,7 +31,7 @@ func Admin(c echo.Context) error {
 	models.FindKey(key, id)
 
 	if key.ID == "" {
-		return c.String(http.StatusForbidden, "Accès refusé pour la clé " + id)
+		return c.String(http.StatusForbidden, "Accès refusé pour la clé "+id)
 	}
 
 	return c.Render(http.StatusOK, "admin", map[string]string{})
@@ -71,7 +71,6 @@ func CountSurveys(c echo.Context) error {
 
 	return c.JSON(200, map[string]int{"count": count})
 }
-
 
 func main() {
 	t := &Template{
