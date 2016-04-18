@@ -6,25 +6,25 @@ const classnames = require('classnames');
 var Survey = React.createClass({
     getInitialState: function() {
         return {
-            hasLayout: this.props.hasLayout
+            enableLayout: this.props.hasLayout
         }
     },
 
-    hasLayout: function() {
+    disableLayout: function() {
         this.setState({
-            hasLayout: false
+            enableLayout: false
         });
     },
 
     render: function() {
         var surveyClasses = classnames({
             survey: true,
-            sumUp: this.state.hasLayout
+            sumUp: this.state.enableLayout
         });
 
         return (
             <article className={surveyClasses}>
-                <div className="layout" onClick={this.hasLayout}>
+                <div className="layout" onClick={this.disableLayout}>
                     <div className="name">{this.props.name}</div>
                     <div className="age">{this.props.age != -1 ? this.props.age + ' ans' : ''}</div>
                     <div className="btn btn-link">Cliquez sur la carte</div>

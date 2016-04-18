@@ -7,14 +7,16 @@ const Survey = require('./survey');
 var Surveys = React.createClass({
     getInitialState: function() {
         return {
-            surveys: []
+            surveys: [],
+            loaded: false
         }
     },
 
     componentDidMount: function() {
         rp(_.merge(routes.surveys.list,{json: true})).then(
             (surveys) => this.setState({
-                surveys: surveys
+                surveys: surveys,
+                loaded: true
             })
         );
     },
@@ -25,11 +27,18 @@ var Surveys = React.createClass({
                 <ul className="pager">
                     <li className="previous" onClick={this.props.showButtons}><a href="#">← Menu</a></li>
                 </ul>
-                <div className="surveys">
+            {!this.state.loaded ?
+             <div className="sk-double-bounce">
+                 <div className="sk-child"></div>
+                 <div className="sk-double-bounce-2"></div>
+             </div>
+             : null
+            }
+             <div className="surveys">
             {this.state.surveys.map((survey, i) =>
                 <Survey key={survey.id} questions={questions} name={survey.name} age={survey.age ? survey.age : ""} answers={[survey.answer1, survey.answer2, survey.answer3, survey.answer4, survey.answer5, survey.answer6, survey.answer7]} messageMaxLength={200} hasLayout={true} />
              )}
-                </div>
+             </div>
             </div>
         )
     }
