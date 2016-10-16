@@ -1,4 +1,15 @@
-pg:
-  image: postgres
-  ports:
-    - 5432:5432
+version: '2'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile-public
+    ports:
+      - "80:80"
+  app:
+    build: .
+    env_file: .env
+  postgres:
+    image: postgres
+    ports:
+      - "5432"

@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"html/template"
+	"log"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -73,8 +74,10 @@ func CountSurveys(c echo.Context) error {
 }
 
 func main() {
+	log.Println("Start server...")
+
 	t := &Template{
-		templates: template.Must(template.ParseGlob("templates/*.html")),
+		templates: template.Must(template.ParseGlob("/templates/*.html")),
 	}
 
 	e := echo.New()

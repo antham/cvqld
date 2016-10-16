@@ -1,0 +1,11 @@
+FROM base/archlinux
+
+RUN pacman -Syy && \
+pacman -S --noconfirm nginx
+
+COPY public /public/
+COPY nginx/nginx.conf /etc/nginx/
+
+EXPOSE 80
+
+CMD ["/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf"]

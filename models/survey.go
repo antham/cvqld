@@ -1,6 +1,8 @@
 package models
 
 import (
+	"time"
+
 	"github.com/satori/go.uuid"
 )
 
@@ -15,6 +17,7 @@ type Survey struct {
 	Answer5 string `json:"answer5" gorm:"not null"`
 	Answer6 string `json:"answer6" gorm:"not null"`
 	Answer7 string `json:"answer7" gorm:"not null"`
+	CreatedAt time.Time `json:"createdAt" gorm:"not null"`
 }
 
 func NewSurvey() *Survey {

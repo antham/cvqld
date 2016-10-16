@@ -12,7 +12,7 @@ var db *gorm.DB
 func init() {
 	var err error
 
-	db, err = gorm.Open("postgres", "user="+os.Getenv("DBUSER")+" dbname="+os.Getenv("DBNAME")+" sslmode=disable")
+	db, err = gorm.Open("postgres", "user="+os.Getenv("DBUSER")+" dbname="+os.Getenv("DBNAME")+" host=postgres sslmode=disable")
 
 	if err != nil {
 		log.Fatal(err)
