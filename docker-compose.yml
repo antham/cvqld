@@ -9,6 +9,7 @@ services:
   app:
     build: .
     env_file: .env
+    restart: always
   postgres:
     image: postgres
     ports:
