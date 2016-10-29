@@ -1,13 +1,16 @@
 version: '2'
 services:
   server:
-    image: "antham/askme-pub"
+    build:
+      context: .
+      dockerfile: Dockerfile-public
     ports:
       - "80:80"
   app:
-    image: "antham/askme"
+    build: .
+    env_file: .env
     restart: always
-    command: askme_linux_arm64
+    command: askme_linux_amd64
   postgres:
     image: postgres
     ports:
