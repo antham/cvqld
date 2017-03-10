@@ -5,9 +5,10 @@ services:
     ports:
       - "80:80"
   app:
+    env_file: .env
     image: "antham/askme"
     restart: always
-    command: askme_linux_arm64
+    command: askme_linux_amd64
   postgres:
     image: postgres
     ports:
