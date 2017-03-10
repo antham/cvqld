@@ -16,7 +16,6 @@
     "classnames": "^2.2.3",
     "cls-bluebird": "^1.0.1",
     "jquery": "^2.2.2",
-    "js-cookie": "^2.1.0",
     "lodash": "^4.9.0",
     "minifyify": "^7.3.2",
     "react": "^0.14.8",

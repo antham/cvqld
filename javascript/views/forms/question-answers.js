@@ -1,7 +1,6 @@
 'use strict';
 
 var rp = require('request-promise');
-var Cookies = require('js-cookie');
 
 const QuestionAnswerForm = require('./question-answer');
 const UserForm = require('./user');
@@ -73,7 +72,6 @@ var QuestionAnswersForm = React.createClass({
                         sending: false
                     }
                 );
-                Cookies.set('done', '1', { expires: 365 });
                 this.props.formSubmitted();
             }
 

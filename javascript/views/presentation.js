@@ -3,8 +3,6 @@
 
 var rp = require('request-promise');
 
-const Cookies = require('js-cookie');
-
 const Surveys = require('./list').Surveys;
 const RandomSurveys = require('./list').RandomSurveys;
 const QuestionAnswersForm = require('./forms').QuestionAnswersForm;
@@ -19,7 +17,6 @@ var Presentation = React.createClass({
             showForm: false,
             showStat: false,
             showPresentation: true,
-            firstVisit: (Cookies.get('done') === undefined),
             count: 0
         };
     },
@@ -72,11 +69,10 @@ var Presentation = React.createClass({
                  <p>Les cent vingt premières réponses furent glanées autour de moi, notamment dans quelques bars nantais sous forme de questionnaires papiers à remplir sur place. Merci donc au Big Ben, au Mon Soleil, à Livresse et au Rouge Mécanique pour leur aide</p>
                  <p>Vous aussi, transformez votre bar préféré en café philo ! Il suffit d'imprimer <a href="/public/pdf/questionnaire.pdf" download>ce questionnaire</a>, de le laisser à disposition des autres clients et de renvoyer les exemplaires scannés remplis, à cette adresse : <strong>{this.props.email}</strong>, pour qu'ils soient intégrés avec les autres.</p>
                  <div className="text-center menu">
-                {this.state.firstVisit ? <button className="btn btn-primary" type="button" onClick={this.showForm}>Répondre au questionnaire pour voir les <strong className="text-success">{this.state.count}</strong> autres réponses</button> : null}
-                {!this.state.firstVisit ? <button className="btn btn-primary" type="button" onClick={this.showList}>Voir la liste des <strong className="text-success">{this.state.count}</strong> réponses</button> : null }
-                {!this.state.firstVisit ? <button className="btn btn-primary" type="button" onClick={this.showRandom}>Voir les réponses au hasard</button> : null }
-                {!this.state.firstVisit ? <button className="btn btn-primary" type="button" onClick={this.showForm}>Répondre à nouveau au questionnaire</button> : null }
-                {!this.state.firstVisit ? <button className="btn btn-danger" type="button" onClick={this.showStat}>C'est nous qui le disons</button> : null }
+                  <button className="btn btn-primary" type="button" onClick={this.showList}>Voir la liste des <strong className="text-success">{this.state.count}</strong> réponses</button>
+                  <button className="btn btn-primary" type="button" onClick={this.showRandom}>Voir les réponses au hasard</button>
+                  <button className="btn btn-primary" type="button" onClick={this.showForm}>Répondre au questionnaire</button>
+                  <button className="btn btn-danger" type="button" onClick={this.showStat}>C'est nous qui le disons</button>
                  </div>
              </div>
              : null}
