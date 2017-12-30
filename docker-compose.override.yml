@@ -6,12 +6,16 @@ services:
       dockerfile: Dockerfile-public
     ports:
       - "80:80"
+    env_file: .env
   app:
     build: .
     env_file: .env
     restart: always
     command: askme_linux_amd64
-  postgres:
-    image: postgres
+  database:
+    build:
+      context: .
+      dockerfile: Dockerfile-database
     ports:
       - "5432"
+    env_file: .env

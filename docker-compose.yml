@@ -2,14 +2,16 @@ version: '2'
 services:
   server:
     image: "antham/askme-pub"
+    env_file: .env
     ports:
       - "80:80"
   app:
-    env_file: .env
     image: "antham/askme"
+    env_file: .env
     restart: always
     command: askme_linux_amd64
-  postgres:
-    image: postgres
+  database:
+    env_file: .env
+    image: "antham/askme-database"
     ports:
       - "5432"
