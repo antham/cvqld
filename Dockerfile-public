@@ -1,11 +1,10 @@
-FROM base/archlinux
+FROM alpine:3.6
 
-RUN pacman -Syy && \
-pacman -S --noconfirm nginx
+RUN apk add --no-cache ca-certificates nginx && \
+    mkdir /run/nginx && \
+    adduser -H -D -G www-data www-data
 
 COPY public /public/
 COPY nginx/nginx.conf /etc/nginx/
-
-EXPOSE 80
 
 CMD ["/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf"]

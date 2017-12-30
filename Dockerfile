@@ -1,19 +1,25 @@
-FROM base/archlinux
+FROM golang:1.9 as server
 
-ENV GOPATH /go
-ENV PATH "${PATH}:/go/src/github.com/antham/askme/"
+RUN go get -u github.com/golang/dep/cmd/dep
+RUN mkdir -p /go/src/github.com/antham/askme
 
-RUN pacman -Syy && \
-pacman -S --noconfirm go git && \
-go get -v github.com/mitchellh/gox
+WORKDIR /go/src/github.com/antham/askme
 
-COPY main.go /go/src/github.com/antham/askme/
-COPY models /go/src/github.com/antham/askme/models/
+COPY Gopkg.* ./
+
+RUN dep ensure -v -vendor-only
+
+COPY . .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o main .
+
+FROM alpine:3.6
+
+RUN apk add --no-cache ca-certificates
+
+WORKDIR /app
+
 COPY templates /templates/
+COPY --from=server /go/src/github.com/antham/askme/main .
 
-WORKDIR /go/src/github.com/antham/askme/
-
-RUN go get -v && \
-/go/bin/gox -os="linux"
-
-EXPOSE 9000
+ENTRYPOINT ["./main"]
