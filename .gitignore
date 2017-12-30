@@ -6,3 +6,4 @@ javascript/node_modules/*
 /stylesheet/bower_components/*
 /askme.tar.gz
 /cvqld
+vendor/*
