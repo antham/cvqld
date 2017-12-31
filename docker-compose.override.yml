@@ -1,12 +1,5 @@
 version: '2'
 services:
-  server:
-    build:
-      context: .
-      dockerfile: Dockerfile-public
-    ports:
-      - "80:80"
-    env_file: .env
   app:
     build: .
     env_file: .env
