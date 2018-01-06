@@ -1,2 +1,2 @@
 'use strict';
-module.exports = 'http://localhost/api/v1';
+module.exports = 'API_URL';
