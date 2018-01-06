@@ -10,6 +10,7 @@ RUN apk add --no-cache ca-certificates nginx && \
 
 COPY --from=javascript /app/bundle.js /public/js/
 COPY --from=stylesheet /app/main.css /public/css/
+COPY --from=stylesheet /app/font /public/css/font/
 COPY nginx.conf /etc/nginx/
 
 CMD ["/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf"]
