@@ -1,19 +1,22 @@
 version: '2'
 services:
   server:
-    image: "antham/askme-pub"
+    image: "antham/cqlvd-server"
     env_file: .env
+    restart: always
     ports:
       - "80:80"
     depends_on:
-      - "app"
-  app:
-    image: "antham/askme"
+      - "api"
+  api:
+    image: "antham/cqlvd-api"
     env_file: .env
     restart: always
-    command: askme_linux_amd64
+    depends_on:
+      - "database"
   database:
+    image: "postgres"
     env_file: .env
-    image: "antham/askme-database"
+    restart: always
     ports:
       - "5432"

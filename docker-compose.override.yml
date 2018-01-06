@@ -1,14 +1,21 @@
 version: '2'
 services:
-  app:
-    build: .
-    env_file: .env
-    restart: always
-    command: askme_linux_amd64
-  database:
+  javascript:
+    image: "antham/cqlvd-javascript"
     build:
-      context: .
-      dockerfile: Dockerfile-database
-    ports:
-      - "5432"
-    env_file: .env
+      context: front/javascript
+  stylesheet:
+    image: "antham/cqlvd-stylesheet"
+    build:
+      context: front/stylesheet
+  server:
+    image: "antham/cqlvd-server"
+    build:
+      context: server
+    depends_on:
+      - javascript
+      - stylesheet
+  api:
+    image: "antham/cqlvd-api"
+    build:
+      context: api

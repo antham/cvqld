@@ -1,6 +1,6 @@
-FROM antham/cqlv-javascript as javascript
+FROM antham/cqlvd-javascript as javascript
 
-FROM antham/cqlv-stylesheet as stylesheet
+FROM antham/cqlvd-stylesheet as stylesheet
 
 FROM alpine:3.6
 
