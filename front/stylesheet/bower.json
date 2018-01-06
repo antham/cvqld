@@ -1,0 +1,26 @@
+{
+  "name": "stylesheet",
+  "homepage": "https://github.com/antham/askme",
+  "authors": [
+    "antham"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lib-sass-mixins": "*",
+    "sass-flex-mixin": "1.0.1",
+    "SpinKit": "spinkit#1.2.5",
+    "bootstrap-sass": "twbs-bootstrap-sass#3.3.6",
+    "bootstrap-switch-sass": "1.3.0+sass.1",
+    "bootswatch-scss": "3.2.0"
+  }
+}
