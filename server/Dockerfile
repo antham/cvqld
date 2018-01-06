@@ -1,6 +1,6 @@
-FROM antham/askme-javascript as javascript
+FROM antham/cqlv-javascript as javascript
 
-FROM antham/askme-stylesheet as stylesheet
+FROM antham/cqlv-stylesheet as stylesheet
 
 FROM alpine:3.6
 
