@@ -12,6 +12,6 @@ COPY yarn.lock .
 RUN yarn
 
 COPY . .
-RUN sed -i "s/API_URL/${API_URL}/g" url.js
+RUN sed -i "s#API_URL#${API_URL}#g" url.js
 
 RUN browserify -v -t [ babelify --presets [ es2015 react ] ] index.js|uglifyjs > bundle.js
