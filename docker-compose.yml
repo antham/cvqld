@@ -5,6 +5,8 @@ services:
     env_file: .env
     ports:
       - "80:80"
+    depends_on:
+      - "app"
   app:
     image: "antham/askme"
     env_file: .env
