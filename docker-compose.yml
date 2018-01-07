@@ -1,7 +1,7 @@
 version: '2'
 services:
   server:
-    image: "antham/cqlvd-server"
+    image: "antham/cvqld-server"
     env_file: .env
     restart: always
     ports:
@@ -9,7 +9,7 @@ services:
     depends_on:
       - "api"
   api:
-    image: "antham/cqlvd-api"
+    image: "antham/cvqld-api"
     env_file: .env
     restart: always
     depends_on:

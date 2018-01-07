@@ -1,21 +1,21 @@
 version: '2'
 services:
   javascript:
-    image: "antham/cqlvd-javascript"
+    image: "antham/cvqld-javascript"
     build:
       context: front/javascript
   stylesheet:
-    image: "antham/cqlvd-stylesheet"
+    image: "antham/cvqld-stylesheet"
     build:
       context: front/stylesheet
   server:
-    image: "antham/cqlvd-server"
+    image: "antham/cvqld-server"
     build:
       context: server
     depends_on:
       - javascript
       - stylesheet
   api:
-    image: "antham/cqlvd-api"
+    image: "antham/cvqld-api"
     build:
       context: api
