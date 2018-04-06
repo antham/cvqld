@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/antham/cvqld/models"
+	"github.com/antham/cvqld/api/models"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 )
