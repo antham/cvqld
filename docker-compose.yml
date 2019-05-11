@@ -15,6 +15,6 @@ services:
     depends_on:
       - "database"
   database:
-    image: "postgres"
+    image: "postgres:10"
     env_file: .env
     restart: always
