@@ -1,13 +1,12 @@
-FROM golang:1.9 as server
+FROM golang:1.12 as server
 
-RUN go get -u github.com/golang/dep/cmd/dep
-RUN mkdir -p /go/src/github.com/antham/cvqld
+RUN mkdir -p /app
 
-WORKDIR /go/src/github.com/antham/cvqld
+WORKDIR /app
 
-COPY Gopkg.* ./
+COPY go.mod go.sum ./
 
-RUN dep ensure -v -vendor-only
+RUN go mod download
 
 COPY . .
 
@@ -20,6 +19,6 @@ RUN apk add --no-cache ca-certificates
 WORKDIR /app
 
 COPY templates /templates/
-COPY --from=server /go/src/github.com/antham/cvqld/main .
+COPY --from=server /app/main .
 
 ENTRYPOINT ["./main"]
