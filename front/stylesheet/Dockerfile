@@ -1,11 +1,11 @@
-FROM alpine:3.6
+FROM node:latest
 
 WORKDIR /app
 
-RUN apk add --no-cache --update sassc nodejs nodejs-npm git && \
-    npm install -g bower@1.8.2
-
+COPY package.json .
+COPY package-lock.json .
+RUN npm install
 COPY . .
 
-RUN bower --allow-root --verbose --force install
-RUN sassc -I bower_components -t compressed main.sass > main.css
+RUN npm install -g sass && \    
+    sass main.sass > main.css
