@@ -1,16 +1,13 @@
 package main
 
 import (
-	"encoding/json"
 	"html/template"
-	"log"
 	"io"
-	"io/ioutil"
+	"log"
 	"net/http"
 
 	"github.com/antham/cvqld/api/models"
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/engine/standard"
+	"github.com/labstack/echo/v4"
 )
 
 type Template struct {
@@ -48,15 +45,8 @@ func FindAllSurveys(c echo.Context) error {
 
 func CreateSurvey(c echo.Context) error {
 	survey := models.NewSurvey()
-	content, err := ioutil.ReadAll(c.Request().Body())
 
-	if err != nil {
-		return c.JSON(400, err)
-	}
-
-	err = json.Unmarshal(content, survey)
-
-	if err != nil {
+	if err := c.Bind(survey); err != nil {
 		return c.JSON(400, err)
 	}
 
@@ -81,12 +71,12 @@ func main() {
 	}
 
 	e := echo.New()
-	e.SetRenderer(t)
-	e.Get("/", Index)
-	e.Get("/admin/:id", Admin)
-	e.Get("/api/v1/surveys", FindAllSurveys)
-	e.Post("/api/v1/surveys", CreateSurvey)
-	e.Get("/api/v1/surveys/count", CountSurveys)
+	e.Renderer = t
+	e.GET("/", Index)
+	e.GET("/admin/:id", Admin)
+	e.GET("/api/v1/surveys", FindAllSurveys)
+	e.POST("/api/v1/surveys", CreateSurvey)
+	e.GET("/api/v1/surveys/count", CountSurveys)
 	e.Static("/public", "public")
-	e.Run(standard.New(":9000"))
+	e.Start(":9000")
 }
