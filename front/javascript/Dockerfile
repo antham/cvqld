@@ -13,4 +13,4 @@ RUN npm install -g browserify babelify uglify-js && \
 COPY . .
 
 RUN sed -i "s#API_URL#${API_URL}#g" url.js && \
-    browserify -v -t [ babelify --presets [ es2015 react ] ] index.js|uglifyjs > bundle.js
+    browserify -v -t [ babelify --presets [ env react ] ] index.js|uglifyjs > bundle.js
